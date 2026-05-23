@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="16.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.playlist_management.controller.PlaylistController">
+    <padding>
+        <Insets top="18" right="18" bottom="18" left="18" />
+    </padding>
+    <children>
+        <Label text="🎵 Music Playlist Management" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+        <GridPane hgap="12" vgap="12">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="16" />
+                <ColumnConstraints percentWidth="34" />
+                <ColumnConstraints percentWidth="16" />
+                <ColumnConstraints percentWidth="34" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+
+            <Label text="ID" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <TextField fx:id="idField" editable="false" promptText="Auto-generated" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            <Label text="Title" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+            <TextField fx:id="titleField" promptText="Song title" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+            <Label text="Artist" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+            <TextField fx:id="artistField" promptText="Artist name" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <Label text="Album" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+            <TextField fx:id="albumField" promptText="Album name" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+
+            <Label text="Genre" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+            <TextField fx:id="genreField" promptText="e.g. Pop" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            <Label text="Duration (s)" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+            <TextField fx:id="durationField" promptText="e.g. 214" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+        </GridPane>
+
+        <HBox spacing="12">
+            <Label text="Playlist:" style="-fx-font-weight: bold;" />
+            <ComboBox fx:id="playlistComboBox" promptText="Assign to playlist" prefWidth="280" />
+        </HBox>
+
+        <HBox spacing="10">
+            <children>
+                <Button text="Add" onAction="#handleAdd" />
+                <Button text="Update" onAction="#handleUpdate" />
+                <Button text="Delete" onAction="#handleDelete" />
+                <Button text="Clear" onAction="#handleClear" />
+            </children>
+        </HBox>
+
+        <TableView fx:id="songTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="60" />
+                <TableColumn fx:id="titleColumn" text="Title" prefWidth="180" />
+                <TableColumn fx:id="artistColumn" text="Artist" prefWidth="150" />
+                <TableColumn fx:id="albumColumn" text="Album" prefWidth="140" />
+                <TableColumn fx:id="genreColumn" text="Genre" prefWidth="100" />
+                <TableColumn fx:id="durationColumn" text="Duration" prefWidth="80" />
+                <TableColumn fx:id="playlistColumn" text="Playlist" prefWidth="120" />
+            </columns>
+        </TableView>
+
+        <Pagination fx:id="songPagination" pageCount="1" maxPageIndicatorCount="5" />
+    </children>
+</VBox>
